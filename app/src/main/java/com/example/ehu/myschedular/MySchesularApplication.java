@@ -5,7 +5,7 @@ import android.app.Application;
 import io.realm.Realm;
 import io.realm.RealmCollection;
 import io.realm.RealmConfiguration;
-
+/*DBの設定や管理*/
 
 public class MySchesularApplication extends Application {
     @Override

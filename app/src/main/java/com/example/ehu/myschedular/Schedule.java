@@ -4,7 +4,7 @@ import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-
+/*テーブルモデル*/
 public class Schedule extends RealmObject {
     @PrimaryKey
     private long id;
