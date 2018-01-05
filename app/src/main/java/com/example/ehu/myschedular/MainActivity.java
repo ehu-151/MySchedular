@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import io.realm.Realm;
@@ -33,10 +34,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ScheduleEditActivity.class));
             }
         });
+        mListView = (ListView) findViewById(R.id.listView);
+        //itemをタップした時、編集する
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Schedule schedule = (Schedule) parent.getItemAtPosition(position);
+                startActivity(new Intent(MainActivity.this,ScheduleEditActivity.class)
+                        .putExtra("schedule_id",schedule.getId()));
+            }
+        });
+
         //Realmのインスタンス取得：準備
         mRealm = Realm.getDefaultInstance();
         //
-        mListView = (ListView) findViewById(R.id.listView);
+
         RealmResults<Schedule> schedules = mRealm.where(Schedule.class).findAll();
         ScheduleAdapter adapter = new ScheduleAdapter(schedules);
         mListView.setAdapter(adapter);

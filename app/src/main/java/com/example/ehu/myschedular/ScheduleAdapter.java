@@ -29,6 +29,7 @@ public class ScheduleAdapter extends RealmBaseAdapter<Schedule> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
+            //1リストの見た目の決定
             convertView = LayoutInflater.from(parent.getContext()).
                     inflate(android.R.layout.simple_expandable_list_item_2, parent, false);
             viewHolder = new ViewHolder();
